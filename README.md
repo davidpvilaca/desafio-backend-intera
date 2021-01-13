@@ -45,7 +45,7 @@ Cada serviço tem seu próprio projeto Node isolado e cada um possui os scripts:
 
 ### Terraform
 
-Para iniciar o terraform acesse a pasta "infrastructure/terraform" e execute no terminal: `terraform init`, após rodar com sucesso basta publicar com `terraform apply`, não se esqueça de sempre fazer uma revisão com `terraform plan`.
+Para iniciar o terraform acesse a pasta "infrastructure/terraform" e execute no terminal: `terraform init`, após rodar com sucesso basta publicar com `terraform apply`, não se esqueça de sempre fazer uma revisão com `terraform plan`. Não se esqueça de ler o README do projeto infrastructure.
 
 Cada serviço, após o build, gera uma pasta `dist` que possui de fato o código que irá para produção.
 
