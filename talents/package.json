@@ -21,7 +21,9 @@
   "author": "David Vilaça <vilacapdavid@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "ramda": "^0.27.1"
+    "aws-sdk": "^2.824.0",
+    "ramda": "^0.27.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
