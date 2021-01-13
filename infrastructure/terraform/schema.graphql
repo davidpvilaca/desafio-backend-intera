@@ -1,0 +1,205 @@
+enum Language {
+  C,
+  Cpp,
+  CS,
+  GO,
+  PYTHON,
+  JAVASCRIPT,
+  JAVA,
+  KOTLIN,,
+  ELIXIR,
+  DART,
+  PHP
+}
+
+enum Framework {
+  LARAVEL,
+  EXPRESS,
+  ADONIS,
+  PRISMA,
+  DJANGO,
+  REACT,
+  ANGULAR,
+  SPRING,
+  VUE,
+  IONIC,
+  REACT_NATIVE
+}
+
+enum SkillCategory {
+  JUNIOR,
+  PLENO,
+  SENIOR,
+  MASTER
+}
+
+enum SpeakLanguage {
+  EN,
+  ES,
+  FR
+}
+
+interface GenericSkill {
+  rate: Int!
+  experience: Int!
+  category: SkillCategory
+}
+
+type LanguageSkill implements GenericSkill {
+  language: Language!
+  rate: Int!
+  experience: Int!
+  category: SkillCategory
+}
+
+type FrameworkSkill implements GenericSkill {
+  framework: Framework!
+  rate: Int!
+  experience: Int!
+  category: SkillCategory
+}
+
+type Skill {
+  languages: [LanguageSkill!]!
+  frameworkSkills: [FrameworkSkill!]!
+  speakLanguages: [SpeakLanguage!]!
+}
+
+type Address {
+  city: String!
+  state: String!
+}
+
+type Person {
+  name: String!
+  address: Address!
+  birthDate: String!
+}
+
+type Talent {
+  id: String!
+  skill: Skill!
+  person: Person!
+  createdAt: String
+  updatedAt: String
+}
+
+interface GenericOpeningSkill {
+  required: Boolean!
+  category: SkillCategory
+}
+
+type OpeningLanguage implements GenericOpeningSkill {
+  language: Language!
+  required: Boolean!
+  category: SkillCategory
+}
+
+type OpeningFramework implements GenericOpeningSkill {
+  framework: Framework!
+  required: Boolean!
+  category: SkillCategory
+}
+
+type Company {
+  name: String!
+  address: Address!
+}
+
+type Opening {
+  id: String!
+  title: String!
+  description: String!
+  company: Company!
+  languages: [OpeningLanguage!]!
+  frameworks: [OpeningFramework!]!
+  speakLanguages: [SpeakLanguage!]!
+  createdAt: String
+  updatedAt: String
+}
+
+type Query {
+  openings(limit: Int, nextToken: String): OpeningConnection!
+  talents(limit: Int, nextToken: String): TalentConnection!
+}
+
+type Mutation {
+  createTalent(data: CreateTalentInput!): TalentCreateReceived!
+  createOpening(data: CreateOpeningInput!): OpeningCreateReceived!
+}
+
+input LanguageSkillInput {
+  language: Language!
+  rate: Int!
+  experience: Int!
+  category: SkillCategory
+}
+input FrameworkSkillInput {
+  framework: Framework!
+  rate: Int!
+  experience: Int!
+  category: SkillCategory
+}
+input SkillInput {
+  languages: [LanguageSkillInput!]!
+  frameworkSkills: [FrameworkSkillInput!]!
+  speakLanguages: [SpeakLanguage!]!
+}
+input AddressCreateInput {
+  city: String!
+  state: String!
+}
+input PersonCreateInput {
+  name: String!
+  address: AddressCreateInput!
+  birthDate: String!
+}
+input CreateTalentInput {
+  skill: SkillInput!
+  person: PersonCreateInput!
+}
+input CompanyCreateInput {
+  name: String!
+  address: AddressCreateInput!
+}
+input OpeningLanguageCreateInput {
+  language: Language!
+  required: Boolean!
+  category: SkillCategory
+}
+input OpeningFrameworkCreateInput {
+  framework: Framework!
+  required: Boolean!
+  category: SkillCategory
+}
+input CreateOpeningInput {
+  title: String!
+  description: String!
+  company: CompanyCreateInput!
+  languages: [OpeningLanguageCreateInput!]!
+  frameworks: [OpeningFrameworkCreateInput!]!
+  speakLanguages: [SpeakLanguage!]!
+}
+
+type OpeningConnection {
+	items: [Opening]
+	nextToken: String
+}
+
+enum Status {
+  OK
+}
+
+type TalentConnection {
+	items: [Talent]
+	nextToken: String
+}
+
+type TalentCreateReceived {
+  status: Status!
+  record: Talent
+}
+type OpeningCreateReceived {
+  status: Status!
+  record: Opening
+}
