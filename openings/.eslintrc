@@ -1,5 +1,5 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "extends": [
     "standard"
   ],
@@ -15,6 +15,7 @@
     "jest/valid-expect": "error"
   },
   "plugins": [
+    "@babel",
     "fp",
     "immutable",
     "jest"
