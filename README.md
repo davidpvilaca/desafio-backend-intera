@@ -65,9 +65,15 @@ O build lambda terá como resultado um arquivo dentro da pasta `dist` chamado `l
 
 ### Terraform
 
-Para iniciar o terraform acesse a pasta "infrastructure/terraform" e execute no terminal: `terraform init`, após rodar com sucesso basta publicar com `terraform apply`, não se esqueça de sempre fazer uma revisão com `terraform plan`. Não se esqueça de ler o README do projeto infrastructure.
+Para criar a infraestrutura,, siga os passos de [infrastructure](infrastructure).
 
-Cada serviço, após o build, gera uma pasta `dist` que possui de fato o código que irá para produção.
+Lembre-se: cada serviço, após o build, gera uma pasta `dist` que possui de fato o código que irá para produção.
+
+## Usando o serviço
+
+Acesse a conta da AWS quando fizer todo processo de deploy, vá no serviço AppSync. A api criada estará disponível, entre nela e clique em "Consultas" para acessar o Playground.
+
+Há alguns exemplos de mutations em [examples/mutations.graphql](examples/mutations.graphql). Para ver o match vá no CloudWatch > Grupo de logs > /aws/lambda/intera_match_lambda e lá estará saindo os logs com os matches e o match value de cada um.
 
 ## Autor
 
