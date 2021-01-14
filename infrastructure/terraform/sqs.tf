@@ -54,3 +54,14 @@ resource "aws_sqs_queue" "intera_match_queue" {
   message_retention_seconds = 86400
   visibility_timeout_seconds = 30
 }
+
+resource "aws_lambda_event_source_mapping" "intera_match_queue_lambda_event" {
+  event_source_arn = aws_sqs_queue.intera_match_queue.arn
+  function_name    = aws_lambda_function.intera_match_lambda.arn
+  batch_size       = 1
+
+  depends_on       = [
+    aws_sqs_queue.intera_match_queue,
+    aws_lambda_function.intera_match_lambda,
+  ]
+}

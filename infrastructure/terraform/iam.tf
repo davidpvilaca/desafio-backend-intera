@@ -185,6 +185,11 @@ resource "aws_iam_role" "iam_intera_match_lambda_role" {
 EOF
 }
 
+resource "aws_cloudwatch_log_group" "intera_match_lambda_log_group" {
+  name              = "/aws/lambda/intera_match_lambda"
+  retention_in_days = 7
+}
+
 data "aws_iam_policy_document" "iam_intera_match_lambda_policy" {
   statement {
     actions = [
@@ -206,6 +211,20 @@ data "aws_iam_policy_document" "iam_intera_match_lambda_policy" {
 
     resources = [
       aws_sqs_queue.intera_match_queue.arn
+    ]
+  }
+
+  statement {
+    actions = [
+      "logs:CreateLogStream",
+      "logs:PutLogEvents",
+    ]
+
+    effect = "Allow"
+
+    resources = [
+      aws_cloudwatch_log_group.intera_match_lambda_log_group.arn,
+      "${aws_cloudwatch_log_group.intera_match_lambda_log_group.arn}:log-stream:*",
     ]
   }
 }
