@@ -2,6 +2,8 @@
 
 Repostório com a solução implementada do desafio de backend da Intera.
 
+***ATENÇÃO: ALGUNS COMANDOS OU SCRIPTS NÃO FUNCIONARAM CORRETAMENTE NO WINDOWS***
+
 ## Estruturação
 
 A solução completa, desde da a infra com terraform até o código das lambdas, está neste repositório. Escolhi trabalhar com monorepo simplesmente por ser mais fácil acompanhar alterações em cada serviço e infra sem ficar me perdendo entre vários repositórios desnecessariamente.
