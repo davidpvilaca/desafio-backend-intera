@@ -1,4 +1,4 @@
 provider "aws" {
-  profile = "davidpvilaca"
+  profile = "intera_davidpvilaca"
   region  = "us-east-2"
 }
