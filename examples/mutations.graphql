@@ -1,0 +1,119 @@
+# Create Openings
+mutation {
+  createOpening(data: {
+    title: "Front End Sênior React",
+    description: "Frontend developer para trabalhar com React na Intera",
+    company: {
+      address: {
+        state: "SP",
+        city: "SP"
+      },
+      name: "Intera"
+    },
+    frameworks: [
+      {
+        required: true,
+        framework: REACT,
+        category: SENIOR
+      }
+    ],
+    languages: [
+      {
+        required: true,
+        language: JAVASCRIPT,
+        category: SENIOR
+      }
+    ],
+    speakLanguages: [
+      EN
+    ]
+    }) {
+    status
+    record {
+      id
+      title
+      description
+      company {
+        name
+        address {
+          state
+          city
+        }
+      }
+      speakLanguages
+      languages {
+        required
+        language
+        category
+      }
+      frameworks {
+        required
+        framework
+        category
+      }
+      createdAt
+      updatedAt
+    }
+  }
+}
+
+# Create talent
+mutation {
+  createTalent(data: {
+    person: {
+      address: {
+        city: "SP",
+        state: "SP"
+      },
+      birthDate: "18/01/1995",
+      name: "David Vilaça"
+    },
+    skill: {
+      frameworkSkills: {
+        rate: 7,
+        framework: REACT,
+        experience: 4,
+        category: PLENO
+      },
+      languages: {
+        rate: 8,
+        language: JAVASCRIPT,
+        experience: 6,
+        category: SENIOR
+      },
+      speakLanguages: [
+        EN
+      ]
+    }
+  }) {
+    status
+    record {
+      id
+      person {
+        address {
+          state
+          city
+        }
+        birthDate
+        name
+      }
+      skill {
+        frameworkSkills {
+          category
+          experience
+          framework
+          rate
+        }
+        languages {
+          category
+          experience
+          language
+          rate
+        }
+        speakLanguages
+      }
+      updatedAt
+      createdAt
+    }
+  }
+}
