@@ -7,6 +7,7 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "babel src -d dist --source-maps",
+    "build:lambda": "./build-lambda.sh",
     "watch": "babel src -w -d dist --source-maps",
     "start": "node dist/index.js",
     "dev": "nodemon --exec babel-node src/index.js",
@@ -21,17 +22,19 @@
   "author": "David Vilaça <vilacapdavid@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "aws-sdk": "^2.827.0",
     "ramda": "^0.27.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
+    "@babel/eslint-parser": "^7.12.1",
+    "@babel/eslint-plugin": "^7.12.1",
     "@babel/node": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@types/jest": "^26.0.20",
     "@types/ramda": "^0.27.34",
     "babel-core": "^6.26.3",
-    "babel-eslint": "^10.1.0",
     "babel-jest": "^26.6.3",
     "eslint": "^7.17.0",
     "eslint-config-standard": "^16.0.2",
