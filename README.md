@@ -35,6 +35,15 @@ Cada serviço possui um arquivo `README.md` com mais informações e instruçõe
 - AWS DynamoDB
 - AWS SQS
 
+## Limitações no escopo
+
+- Não foi considerado vagas remotas
+- Foi limitado a localidade da vaga para quem mora na mesma cidade e estado
+- Não foi considerado experiência ou categoria (senior, pleno, junior, etc.) para realizar o match, apesar de existir no banco de dados
+
+## Mas e os testes?
+
+Reconheço a importância de se ter testes em cada serviço, porém devido ao tempo e minha viagem esse item eu fiquei devendo. Fica como um dos pontos de melhoria.
 ## Pontos importantes
 
 - Índice do DynamoDB. Atualmente as tabelas do DynamoDB possui apenas 1 chave de hash, porém está longe de ser o ideal. Uma melhoria a se propor seria uma ou mais chaves de classificação, para separar os dados de acordo com tais informações. Ex: Se for importante a localidade da vaga x localidade do talento, daria para colocar o município como chave de classificação, ou talvez uma tupla de estado e município.
