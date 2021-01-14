@@ -109,7 +109,7 @@ export const upsertOpening = async opening => {
   }
 
   try {
-    await sendToMatch(opening)
+    await sendToMatch(opening, 'OPENING')
   } catch (e) {
     console.error('Send to match ERROR')
     throwError(e)
@@ -121,14 +121,15 @@ export const upsertOpening = async opening => {
 /**
  * Envia o objeto criado para a fila de fazer match
  *
- * @param {*} opening
+ * @param {*} payload
+ * @param {*} type
  */
-const sendToMatch = async opening => {
+const sendToMatch = async (payload, type) => {
   const params = {
     QueueUrl: ENVIRONMENTS.matchQueueUrl,
     MessageBody: JSON.stringify({
-      type: 'OPENING',
-      payload: opening
+      type,
+      payload
     })
   }
   const result = await sqs.sendMessage(params).promise()
