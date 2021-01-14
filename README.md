@@ -35,6 +35,14 @@ Cada serviço possui um arquivo `README.md` com mais informações e instruçõe
 - AWS DynamoDB
 - AWS SQS
 
+## Pontos importantes
+
+- Índice do DynamoDB. Atualmente as tabelas do DynamoDB possui apenas 1 chave de hash, porém está longe de ser o ideal. Uma melhoria a se propor seria uma ou mais chaves de classificação, para separar os dados de acordo com tais informações. Ex: Se for importante a localidade da vaga x localidade do talento, daria para colocar o município como chave de classificação, ou talvez uma tupla de estado e município.
+- O match também está longe de ser ideal com uma lambda, o ideal seria utilizar algo que os interessados no match poderiam ser informados por uma subscription. Ex: AWS SNS, onde ao acontecer um match um evento seja disparado e os "ouvintes" informados.
+- Há uma taxa considerável de duplicação de código, o ideal seria trabalhar com um maior desacoplamento transferindo responsabilidades para um serviço em comúm. Ex: Utilizar uma arquitetura hexagonal separando completamente a parte de business da parte de entrada/saída de dados.
+- Abusar do paradigma funcional. Esse ponto não chega ser extremamente relevante, porém eu acredito em uma maior previsibilidade no paradigma funcional. Mas independente do paradigma dá para se ter micro serviços bem feitos com boa testabilidade.
+- A linguagem JavaScript é bastante produtiva mas sempre é um risco obter erros em runtime. Sempre fui entusiasta do TypeScript justamente para reduzir erros que geralmente são resolvidos com uma "compilação" com checagem de tipos.
+
 ## Build e deploy
 
 Cada serviço tem seu próprio projeto Node isolado e cada um possui os scripts:
