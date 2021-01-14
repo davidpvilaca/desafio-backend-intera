@@ -47,9 +47,10 @@ Cada serviço possui um arquivo `README.md` com mais informações e instruçõe
 
 Cada serviço tem seu próprio projeto Node isolado e cada um possui os scripts:
 
-- Build: `npm run build`
+- Build: `npm run build:lambda`
 - Verificação de conformidade com linter: `npm run lint`
-- Executar testes: `npm test`
+
+O build lambda terá como resultado um arquivo dentro da pasta `dist` chamado `latest.zip`, onde contém todo o fonte da lambda que está pronto para upload na sua respectiva pasta do bucket.
 
 ### Terraform
 
