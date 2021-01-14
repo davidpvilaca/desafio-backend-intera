@@ -18,6 +18,10 @@
 
 Este serviço foi desenvolvido com a linguagem JavaScript (NodeJS).
 
+## Build
+
+Há dois scripts de build: `npm run build` que gera a pasta dist com o código fonte de produção e o `npm run build:lambda` que além de gerar todo código fonte de produção também cria um arquivo zip com eles, chamado `latest.zip`.
+
 ## **Projeto**
 
 Basicamente o projeto possui duas funções dentro do mesmo escopo, são elas:

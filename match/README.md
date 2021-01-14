@@ -18,6 +18,10 @@
 
 Este serviço foi desenvolvido com a linguagem JavaScript (NodeJS).
 
+## Build
+
+Há dois scripts de build: `npm run build` que gera a pasta dist com o código fonte de produção e o `npm run build:lambda` que além de gerar todo código fonte de produção também cria um arquivo zip com eles, chamado `latest.zip`.
+
 ## **Projeto**
 
 Basicamente o projeto possui apenas uma funcionalidade que é fazer o match entre Talents e Openings, tanto através de mensagens vinda de Openings (consultando os Talents) quanto de Talents (consultando as Openings). Esse serviço também gera um valor de match que é para ser interpretado como um critério de desempate caso haja mais de 1 match. Ou seja, quanto maior o valor do Match Value maior é a probabilidade do match ser bom.
